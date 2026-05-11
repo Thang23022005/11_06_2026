@@ -3,29 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grok Auto Login</title>
+    <title>Grok Auto Login - Đếm ngược 1 tháng</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #000; color: #fff; }
-        .card { text-align: center; padding: 30px; border: 1px solid #333; border-radius: 12px; background: #111; max-width: 400px; }
-        .spinner { border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid #22c55e; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        .card { text-align: center; padding: 40px; border: 1px solid #333; border-radius: 16px; background: #111; max-width: 420px; box-shadow: 0 0 30px rgba(34, 197, 94, 0.2); }
+        .spinner { border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid #22c55e; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        h2 { margin: 0 0 10px; font-size: 1.5rem; }
-        p { color: #888; font-size: 0.9rem; }
+        h2 { margin: 0 0 12px; font-size: 1.6rem; }
+        p { color: #aaa; font-size: 0.95rem; line-height: 1.5; }
+        #countdown { font-size: 1.1rem; font-weight: 600; color: #22c55e; margin: 15px 0; }
+        .success { color: #22c55e; margin-top: 10px; font-weight: 500; }
     </style>
 </head>
 <body>
     <div class="card">
         <div class="spinner"></div>
-        <h2>Đang đăng nhập Grok</h2>
-        <p>Hệ thống đang khởi tạo phiên làm việc 30 ngày. Vui lòng không đóng trình duyệt...</p>
+        <h2>Đang thiết lập phiên đăng nhập Grok</h2>
+        <p>Hệ thống đang import cookie...</p>
+        
+        <!-- Bộ đếm ngược -->
+        <div id="countdown">Phiên cookie còn: <strong>30 ngày 00 giờ 00 phút</strong></div>
+        
+        <div class="success">Đang chuyển hướng đến grok.com...</div>
     </div>
 
     <script>
-        // Thời gian hết hạn: 30 ngày kể từ hôm nay (Unix Timestamp)
-        const expiryOneMonth = Math.floor(Date.now() / 1000) + (30 * 24 * 60 * 60);
-        const expiryDateStr = new Date(expiryOneMonth * 1000).toUTCString();
-
-        const cookies = [
+        // === COOKIES TỪ FILE JSON CỦA BẠN ===
+        const cookies = [ /* ... toàn bộ cookies giống phiên bản trước ... */ 
             {"name":"i18nextLng","value":"vi"},
             {"name":"OptanonAlertBoxClosed","value":"2026-05-11T08:47:23.962Z"},
             {"name":"_ga","value":"GA1.1.1068480676.1778489242"},
@@ -38,18 +42,55 @@
             {"name":"sso-rw","value":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uX2lkIjoiNDIxMDQ0NzgtMmM0Yy00YWZmLWJhYWEtN2NmMzEwOTc5NjRhIn0.XiNqRBBSieUCk3_nv9d-Nye9VaVwYWn4OyYLso6rNkE"},
             {"name":"sso","value":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uX2lkIjoiNDIxMDQ0NzgtMmM0Yy00YWZmLWJhYWEtN2NmMzEwOTc5NjRhIn0.XiNqRBBSieUCk3_nv9d-Nye9VaVwYWn4OyYLso6rNkE"},
             {"name":"x-userid","value":"8c379836-6fab-4fff-b965-edf0fb284985"},
-            {"name":"__cf_bm","value":"ppq5.jnCkTeC6YpXDK4uFDIqTADJ0gBzaBScSzoV2R0-1778494673.2681215-1.0.1.1-WAbCwI95BakKYDMD1OU_Tc7Ck9dezpQ1cLn8QjV0_P6BCi6kdm8HXw6CcYOlFmbZHZLUWCb6MgXgVWTTL3lQgGCXtsbCJk76WdCts_38l7bQT_E8tt5ptWYPgEyPLMHN"}
+            {"name":"__stripe_sid","value":"042fb324-706d-47f1-a320-dc82adf9570e14933a"},
+            {"name":"mp_ea93da913ddb66b6372b89d97b1029ac_mixpanel","value":"%7B%22distinct_id%22%3A%228c379836-6fab-4fff-b965-edf0fb284985%22%2C%22%24device_id%22%3A%22cdeee4f1-9899-4502-872e-3d4531fb3fae%22%2C%22%24initial_referrer%22%3A%22https%3A%2F%2Fgrok.com%2F%3F__cf_chl_tk%3DwrhRfqgh.FrNbnimqfPuXk7C5sNgcn2v2FpsZCTL4Lg-1778487909-1.0.1.1-aekxk1EjbjVTy8CjEFuZVd4kYcOauFL855r3ojbTAZA%22%2C%22%24initial_referring_domain%22%3A%22grok.com%22%2C%22__mps%22%3A%7B%7D%2C%22__mpso%22%3A%7B%7D%2C%22__mpus%22%3A%7B%7D%2C%22__mpa%22%3A%7B%7D%2C%22__mpu%22%3A%7B%7D%2C%22__mpr%22%3A%5B%5D%2C%22__mpap%22%3A%5B%5D%2C%22%24user_id%22%3A%228c379836-6fab-4fff-b965-edf0fb284985%22%7D"},
+            {"name":"__cf_bm","value":"ppq5.jnCkTeC6YpXDK4uFDIqTADJ0gBzaBScSzoV2R0-1778494673.2681215-1.0.1.1-WAbCwI95BakKYDMD1OU_Tc7Ck9dezpQ1cLn8QjV0_P6BCi6kdm8HXw6CcYOlFmbZHZLUWCb6MgXgVWTTL3lQgGCXtsbCJk76WdCts_38l7bQT_E8tt5ptWYPgEyPLMHN"},
+            {"name":"OptanonConsent","value":"isGpcEnabled=0&datestamp=Mon+May+11+2026+17%3A17%3A55+GMT%2B0700+(Gi%E1%BB%9D+%C4%90%C3%B4ng+D%C6%B0%C6%A1ng)&version=202603.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=d312f9f0-1756-4b36-a42e-1b49b0e91349&interactionCount=1&isAnonUser=1&prevHadToken=0&landingPath=NotLandingPage&groups=C0001%3A1%2CC0004%3A1%2CC0002%3A1&intType=1&crTime=1778489244599&geolocation=VN%3B48&AwaitingReconsent=false"},
+            {"name":"_ga_8FEWB057YH","value":"GS2.1.s1778493015$o2$g1$t1778494675$j60$l0$h0"},
+            {"name":"ttcsid","value":"1778493004113::PvmWH-8S1dQanDcAYCXm.2.1778494681240.0::1.1666834.1676911::1017258.13.1261.131::0.0.0"},
+            {"name":"ttcsid_D71VVR3C77U1B31RURV0","value":"1778493008132::GuwzaygUr65XG0nSBHfM.2.1778494681240.1"}
         ];
 
-        cookies.forEach(c => {
-            // Gán cookie cho cả domain chính và subdomain
-            document.cookie = `${c.name}=${c.value}; domain=.grok.com; path=/; expires=${expiryDateStr}; Secure; SameSite=Lax`;
+        // Thời gian hết hạn: 30 ngày (1 tháng)
+        const expiryTime = Date.now() + 30 * 24 * 60 * 60 * 1000;
+        const expiryDateStr = new Date(expiryTime).toUTCString();
+
+        // Set cookies
+        cookies.forEach(cookie => {
+            const str = `${cookie.name}=${cookie.value}; domain=.grok.com; path=/; expires=${expiryDateStr}; Secure; SameSite=Lax`;
+            document.cookie = str;
         });
 
-        // Chuyển hướng sau khi hoàn tất thiết lập
+        // === BỘ ĐẾM NGƯỢC ===
+        function updateCountdown() {
+            const now = Date.now();
+            let diff = expiryTime - now;
+
+            if (diff < 0) {
+                document.getElementById("countdown").innerHTML = "Phiên cookie đã hết hạn!";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            diff %= (1000 * 60 * 60 * 24);
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            diff %= (1000 * 60 * 60);
+            const minutes = Math.floor(diff / (1000 * 60));
+            diff %= (1000 * 60);
+            const seconds = Math.floor(diff / 1000);
+
+            document.getElementById("countdown").innerHTML = 
+                `Phiên cookie còn: <strong>${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây</strong>`;
+        }
+
+        // Cập nhật đếm ngược mỗi giây
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // chạy lần đầu
+
+        // Chuyển hướng sau 2 giây
         setTimeout(() => {
             window.location.href = "https://grok.com";
-        }, 1500);
+        }, 2000);
     </script>
 </body>
 </html>
