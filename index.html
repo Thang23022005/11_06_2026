@@ -9,26 +9,42 @@
 
     <script>
         const cookies = [
-            {"domain":".grok.com","name":"__cf_bm","value":"G_y.OQ3bvDcwE0BGtA1LjTpy78TITZKScPmQZBzgXH0-1778489173.7697105-1.0.1.1-CvtXDqPouKJVnBOM81zCpq4X6uSJeRzWkjSo.NdyoqIR6E5Rew8qeuXofj.tUGpb7Vd5ILx9w1JHDUJA508wnKt3tkmm9ppNLw57q85VxHdTz_dz1RLohNyFhI4X51dJ","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"mp_ea93da913ddb66b6372b89d97b1029ac_mixpanel","value":"%7B%22distinct_id%22%3A%228c379836-6fab-4fff-b965-edf0fb284985%22%2C%22%24device_id%22%3A%22cdeee4f1-9899-4502-872e-3d4531fb3fae%22%2C%22%24initial_referrer%22%3A%22https%3A%2F%2Fgrok.com%2F%3F__cf_chl_tk%3DwrhRfqgh.FrNbnimqfPuXk7C5sNgcn2v2FpsZCTL4Lg-1778487909-1.0.1.1-aekxk1EjbjVTy8CjEFuZVd4kYcOauFL855r3ojbTAZA%22%2C%22%24initial_referring_domain%22%3A%22grok.com%22%2C%22__mps%22%3A%7B%22%24os%22%3A%22Windows%22%2C%22%24browser%22%3A%22Chrome%22%2C%22%24browser_version%22%3A147%2C%22country%22%3A%22VN%22%2C%22user_segment%22%3A%22consumer%22%7D%2C%22__mpso%22%3A%7B%22%24initial_referrer%22%3A%22https%3A%2F%2Fgrok.com%2F%3F__cf_chl_tk%3DwrhRfqgh.FrNbnimqfPuXk7C5sNgcn2v2FpsZCTL4Lg-1778487909-1.0.1.1-aekxk1EjbjVTy8CjEFuZVd4kYcOauFL855r3ojbTAZA%22%2C%22%24initial_referring_domain%22%3A%22grok.com%22%7D%2C%22__mpus%22%3A%7B%7D%2C%22__mpa%22%3A%7B%7D%2C%22__mpu%22%3A%7B%7D%2C%22__mpr%22%3A%5B%5D%2C%22__mpap%22%3A%5B%5D%2C%22%24user_id%22%3A%228c379836-6fab-4fff-b965-edf0fb284985%22%7D","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":"grok.com","name":"i18nextLng","value":"vi","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"x-anonuserid","value":"e1998352-493a-4541-aaf7-ff19420cc88f","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"x-challenge","value":"7AQmhQK6MTpuZENfnM9HfS2rF%2FshGQXu9JArfm%2Bzwtc2QqqJkG%2BbR5xZBhPklDVTs4z2gOMb0tEjCISvQMe3S8lKMbKy6Nsvj1WpyAyOKTsWEt4E6lTB5QFj%2Fjrj%2BUSICHGn03L2Whayf%2Fucc0adapj%2BF%2BV1FIlKEUouqmSzw21qlQUj9Sw%3D","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"x-signature","value":"hpjDdxTrhC1I%2FCA2VFlOghbLHifDH%2FZ6tGzfokmm161nkYH%2FWN09af84S9DwJTA8qd%2BVFXI8QjUI46j7%2BvpEVQ%3D%3D","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"OptanonAlertBoxClosed","value":"2026-05-11T08:47:23.962Z","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"_ga","value":"GA1.1.1068480676.1778489242","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"_ga_8FEWB057YH","value":"GS2.1.s1778489240$o1$g0$t1778489243$j60$l0$h0","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"_twpid","value":"tw.1778489244166.969247160390720492","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"__stripe_mid","value":"e38257d3-041f-4d63-a7f7-7ea5b8876b8be02694","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"__stripe_sid","value":"aec35e23-7aca-45ff-900f-aa09a7aed57ba5e9ca","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"_gcl_au","value":"1.1.585636048.1778489244","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"OptanonConsent","value":"isGpcEnabled=0&datestamp=Mon+May+11+2026+15%3A47%3A24+GMT%2B0700+(Gi%E1%BB%9D+%C4%90%C3%B4ng+D%C6%B0%C6%A1ng)&version=202603.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=d312f9f0-1756-4b36-a42e-1b49b0e91349&interactionCount=1&isAnonUser=0&prevHadToken=0&landingPath=NotLandingPage&groups=C0001%3A1%2CC0004%3A1%2CC0002%3A1&intType=1&crTime=1778489244599","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"_tt_enable_cookie","value":"1","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"_ttp","value":"01KRB3GEZN1TK41PWMH74SPX3B_.tt.1","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"_fbp","value":"fb.1.1778489244403.556727695491475540.AQYAAQIB","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"ttcsid","value":"1778489244669::jZMrdgFyIgXjhMyDAb1l.1.1778489254702.0::1.-5883.0::126.1.1561.487::0.0.0","path":"/","expires":"2026-06-10T15:45:00Z"},
-            {"domain":".grok.com","name":"ttcsid_D71VVR3C77U1B31RURV0","value":"1778489244668::WMkNDpnE2k5ETEccMm9d.1.1778489254704.1","path":"/","expires":"2026-06-10T15:45:00Z"}
-        ];
+  {
+    "domain": "grok.com",
+    "expirationDate": 1781172000,
+    "name": "i18nextLng",
+    "path": "/",
+    "value": "vi"
+  },
+  {
+    "domain": ".grok.com",
+    "expirationDate": 1781172000,
+    "name": "OptanonAlertBoxClosed",
+    "path": "/",
+    "value": "2026-05-11T08:47:23.962Z"
+  },
+  {
+    "domain": ".grok.com",
+    "expirationDate": 1781172000,
+    "name": "_ga",
+    "path": "/",
+    "value": "GA1.1.1068480676.1778489242"
+  },
+  {
+    "domain": ".grok.com",
+    "expirationDate": 1781172000,
+    "name": "sso-rw",
+    "path": "/",
+    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uX2lkIjoiNDIxMDQ0NzgtMmM0Yy00YWZmLWJhYWEtN2NmMzEwOTc5NjRhIn0.XiNqRBBSieUCk3_nv9d-Nye9VaVwYWn4OyYLso6rNkE"
+  },
+  {
+    "domain": ".grok.com",
+    "expirationDate": 1781172000,
+    "name": "sso",
+    "path": "/",
+    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uX2lkIjoiNDIxMDQ0NzgtMmM0Yy00YWZmLWJhYWEtN2NmMzEwOTc5NjRhIn0.XiNqRBBSieUCk3_nv9d-Nye9VaVwYWn4OyYLso6rNkE"
+  }
+]
 
         cookies.forEach(c => {
             document.cookie = `${c.name}=${c.value}; domain=${c.domain}; path=${c.path}; expires=${c.expires}; secure`;
