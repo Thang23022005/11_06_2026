@@ -48,14 +48,8 @@
 
       const exp = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
 
+      // sso & sso-rw là httpOnly — không set được qua JS, nhưng các cookie còn lại đủ để duy trì phiên
       const cookies = [
-        {
-          name: "mp_ea93da913ddb66b6372b89d97b1029ac_mixpanel",
-          value: "%7B%22distinct_id%22%3A%228c379836-6fab-4fff-b965-edf0fb284985%22%2C%22%24device_id%22%3A%22cdeee4f1-9899-4502-872e-3d4531fb3fae%22%2C%22%24initial_referrer%22%3A%22https%3A%2F%2Fgrok.com%2F%3F__cf_chl_tk%3DwrhRfqgh.FrNbnimqfPuXk7C5sNgcn2v2FpsZCTL4Lg-1778487909-1.0.1.1-aekxk1EjbjVTy8CjEFuZVd4kYcOauFL855r3ojbTAZA%22%2C%22%24initial_referring_domain%22%3A%22grok.com%22%2C%22__mps%22%3A%7B%22%24os%22%3A%22Windows%22%2C%22%24browser%22%3A%22Chrome%22%2C%22%24browser_version%22%3A147%2C%22country%22%3A%22VN%22%2C%22user_segment%22%3A%22consumer%22%7D%2C%22__mpso%22%3A%7B%22%24initial_referrer%22%3A%22https%3A%2F%2Fgrok.com%2F%3F__cf_chl_tk%3DwrhRfqgh.FrNbnimqfPuXk7C5sNgcn2v2FpsZCTL4Lg-1778487909-1.0.1.1-aekxk1EjbjVTy8CjEFuZVd4kYcOauFL855r3ojbTAZA%22%2C%22%24initial_referring_domain%22%3A%22grok.com%22%7D%2C%22__mpus%22%3A%7B%7D%2C%22__mpa%22%3A%7B%7D%2C%22__mpu%22%3A%7B%7D%2C%22__mpr%22%3A%5B%5D%2C%22__mpap%22%3A%5B%5D%2C%22%24user_id%22%3A%228c379836-6fab-4fff-b965-edf0fb284985%22%7D",
-          expires: exp,
-          path: "/",
-          sameSite: ""
-        },
         {
           name: "i18nextLng",
           value: "vi",
@@ -64,29 +58,15 @@
           sameSite: "Strict"
         },
         {
-          name: "x-anonuserid",
-          value: "563156f5-a627-4fa5-ba18-3e3667b664bd",
-          expires: exp,
-          path: "/",
-          sameSite: ""
-        },
-        {
-          name: "x-challenge",
-          value: "s3lDLR44nEfMHA44BK6bww5bkjE6LKdF5KDmxggOipKSHPokXOsJOc6Tr2tqxswMCxjIbwC%2B6J%2F0EWpHdRCPPKtBeJpHkNB50ImcbD%2B2ThrBCqdI9XBG36%2B%2FQV2lt5IDIUyZ4iSw898MuXE9gQsgXIpnjruPQKgLzj5gKU2DHPDocnM6jAQ%3D",
-          expires: exp,
-          path: "/",
-          sameSite: ""
-        },
-        {
-          name: "x-signature",
-          value: "h9VaumjDr0CR8LkM5dcNEwmJVFIZtYuGXksMvOfSIKE%2BB%2BvTAZEj0VfF3tGL4c3Y7RnX8EUQsMJGz7mncF1mrg%3D%3D",
-          expires: exp,
-          path: "/",
-          sameSite: ""
-        },
-        {
           name: "__stripe_mid",
           value: "2d7795d3-fb0e-4a3f-ad10-f25c8a056d96607570",
+          expires: exp,
+          path: "/",
+          sameSite: "Strict"
+        },
+        {
+          name: "__stripe_sid",
+          value: "516ce2b5-d92c-4f08-a964-a36d4d9e14e5d3a7f4",
           expires: exp,
           path: "/",
           sameSite: "Strict"
@@ -101,13 +81,6 @@
         {
           name: "_ga",
           value: "GA1.1.225151273.1778495978",
-          expires: exp,
-          path: "/",
-          sameSite: ""
-        },
-        {
-          name: "_ga_8FEWB057YH",
-          value: "GS2.1.s1778495977$o1$g0$t1778495981$j60$l0$h0",
           expires: exp,
           path: "/",
           sameSite: ""
@@ -148,25 +121,46 @@
           sameSite: "Lax"
         },
         {
-          name: "ttcsid",
-          value: "1778495981538::KrPRC6uh_wnwcbtXXJqR.1.1778495981766.0::1.-7713.0::0.0.0.0::0.0.0",
+          name: "x-userid",
+          value: "8c379836-6fab-4fff-b965-edf0fb284985",
           expires: exp,
           path: "/",
           sameSite: ""
         },
         {
-          name: "ttcsid_D71VVR3C77U1B31RURV0",
-          value: "1778495981533::EykR16IY_DSXMe7loSja.1.1778495981766.0",
+          name: "mp_ea93da913ddb66b6372b89d97b1029ac_mixpanel",
+          value: "%7B%22distinct_id%22%3A%228c379836-6fab-4fff-b965-edf0fb284985%22%2C%22%24device_id%22%3A%22cdeee4f1-9899-4502-872e-3d4531fb3fae%22%2C%22%24initial_referrer%22%3A%22https%3A%2F%2Fgrok.com%2F%3F__cf_chl_tk%3DwrhRfqgh.FrNbnimqfPuXk7C5sNgcn2v2FpsZCTL4Lg-1778487909-1.0.1.1-aekxk1EjbjVTy8CjEFuZVd4kYcOauFL855r3ojbTAZA%22%2C%22%24initial_referring_domain%22%3A%22grok.com%22%2C%22__mps%22%3A%7B%7D%2C%22__mpso%22%3A%7B%7D%2C%22__mpus%22%3A%7B%7D%2C%22__mpa%22%3A%7B%7D%2C%22__mpu%22%3A%7B%7D%2C%22__mpr%22%3A%5B%5D%2C%22__mpap%22%3A%5B%5D%2C%22%24user_id%22%3A%228c379836-6fab-4fff-b965-edf0fb284985%22%7D",
+          expires: exp,
+          path: "/",
+          sameSite: ""
+        },
+        {
+          name: "_ga_8FEWB057YH",
+          value: "GS2.1.s1778495977$o1$g1$t1778496628$j60$l0$h0",
           expires: exp,
           path: "/",
           sameSite: ""
         },
         {
           name: "OptanonConsent",
-          value: "isGpcEnabled=0&datestamp=Mon+May+11+2026+17%3A39%3A41+GMT%2B0700+(Gi%E1%BB%9D+%C4%90%C3%B4ng+D%C6%B0%C6%A1ng)&version=202603.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=7c2be7e3-14e6-4d12-8dd0-d9c6580af386&interactionCount=1&isAnonUser=1&prevHadToken=0&landingPath=NotLandingPage&groups=C0001%3A1%2CC0004%3A1%2CC0002%3A1&intType=1&crTime=1778495981771",
+          value: "isGpcEnabled=0&datestamp=Mon+May+11+2026+17%3A50%3A29+GMT%2B0700+(Gi%E1%BB%9D+%C4%90%C3%B4ng+D%C6%B0%C6%A1ng)&version=202603.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=7c2be7e3-14e6-4d12-8dd0-d9c6580af386&interactionCount=1&isAnonUser=1&prevHadToken=0&landingPath=NotLandingPage&groups=C0001%3A1%2CC0004%3A1%2CC0002%3A1&intType=1&crTime=1778495981771&geolocation=VN%3B48&AwaitingReconsent=false",
           expires: exp,
           path: "/",
           sameSite: "Lax"
+        },
+        {
+          name: "ttcsid_D71VVR3C77U1B31RURV0",
+          value: "1778495981533::EykR16IY_DSXMe7loSja.1.1778496630907.1",
+          expires: exp,
+          path: "/",
+          sameSite: ""
+        },
+        {
+          name: "ttcsid",
+          value: "1778495981538::KrPRC6uh_wnwcbtXXJqR.1.1778496630907.0::1.643330.649088::653545.4.1207.231::0.0.0",
+          expires: exp,
+          path: "/",
+          sameSite: ""
         }
       ];
 
