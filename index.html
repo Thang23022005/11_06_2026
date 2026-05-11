@@ -1,58 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <title>Login Grok - 1 Tháng</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển hướng đăng nhập Grok</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f4f4f9; }
+        .container { text-align: center; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 10px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
 </head>
 <body>
-    <h2>Đang tự động đăng nhập Grok...</h2>
-    <p>Vui lòng chờ 3 giây. Không đóng tab.</p>
+    <div class="container">
+        <h2>Đang thiết lập phiên đăng nhập...</h2>
+        <div class="loader"></div>
+        <p>Vui lòng chờ giây lát, bạn sẽ được chuyển đến Grok.</p>
+    </div>
 
     <script>
         const cookies = [
-  {
-    "domain": "grok.com",
-    "expirationDate": 1781172000,
-    "name": "i18nextLng",
-    "path": "/",
-    "value": "vi"
-  },
-  {
-    "domain": ".grok.com",
-    "expirationDate": 1781172000,
-    "name": "OptanonAlertBoxClosed",
-    "path": "/",
-    "value": "2026-05-11T08:47:23.962Z"
-  },
-  {
-    "domain": ".grok.com",
-    "expirationDate": 1781172000,
-    "name": "_ga",
-    "path": "/",
-    "value": "GA1.1.1068480676.1778489242"
-  },
-  {
-    "domain": ".grok.com",
-    "expirationDate": 1781172000,
-    "name": "sso-rw",
-    "path": "/",
-    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uX2lkIjoiNDIxMDQ0NzgtMmM0Yy00YWZmLWJhYWEtN2NmMzEwOTc5NjRhIn0.XiNqRBBSieUCk3_nv9d-Nye9VaVwYWn4OyYLso6rNkE"
-  },
-  {
-    "domain": ".grok.com",
-    "expirationDate": 1781172000,
-    "name": "sso",
-    "path": "/",
-    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uX2lkIjoiNDIxMDQ0NzgtMmM0Yy00YWZmLWJhYWEtN2NmMzEwOTc5NjRhIn0.XiNqRBBSieUCk3_nv9d-Nye9VaVwYWn4OyYLso6rNkE"
-  }
-]
+            { "domain": ".grok.com", "expirationDate": 1781172000, "name": "i18nextLng", "path": "/", "value": "vi" },
+            { "domain": ".grok.com", "expirationDate": 1781172000, "name": "OptanonAlertBoxClosed", "path": "/", "value": "2026-05-11T08:47:23.962Z" },
+            { "domain": ".grok.com", "expirationDate": 1781172000, "name": "_ga", "path": "/", "value": "GA1.1.1068480676.1778489242" },
+            { "domain": ".grok.com", "expirationDate": 1781172000, "name": "sso-rw", "path": "/", "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uX2lkIjoiNDIxMDQ0NzgtMmM0Yy00YWZmLWJhYWEtN2NmMzEwOTc5NjRhIn0.XiNqRBBSieUCk3_nv9d-Nye9VaVwYWn4OyYLso6rNkE" },
+            { "domain": ".grok.com", "expirationDate": 1781172000, "name": "sso", "path": "/", "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uX2lkIjoiNDIxMDQ0NzgtMmM0Yy00YWZmLWJhYWEtN2NmMzEwOTc5NjRhIn0.XiNqRBBSieUCk3_nv9d-Nye9VaVwYWn4OyYLso6rNkE" }
+        ];
 
         cookies.forEach(c => {
-            document.cookie = `${c.name}=${c.value}; domain=${c.domain}; path=${c.path}; expires=${c.expires}; secure`;
+            // Chuyển đổi timestamp sang định dạng chuỗi chuẩn của trình duyệt
+            const date = new Date(c.expirationDate * 1000);
+            const expires = date.toUTCString();
+            
+            // Gán cookie với đầy đủ thuộc tính
+            // Lưu ý: Secure; SameSite=Lax giúp tăng khả năng hoạt động trên trình duyệt hiện đại
+            document.cookie = `${c.name}=${c.value}; domain=${c.domain}; path=${c.path}; expires=${expires}; Secure; SameSite=Lax`;
         });
 
+        // Chuyển hướng sau 1.5 giây để đảm bảo trình duyệt đã kịp lưu cookie
         setTimeout(() => {
             window.location.href = "https://grok.com";
-        }, 2000);
+        }, 1500);
     </script>
 </body>
 </html>
